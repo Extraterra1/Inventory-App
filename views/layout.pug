@@ -1,7 +1,17 @@
 doctype html
 html
   head
-    title= title
+    title #{title} | Stocky McStockit
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    nav.header
+      .title
+        h1 Stocky McStockit
+      .links 
+        span 
+          a(href="/") Products
+        span 
+          a(href="/") Create
+        span 
+          a(href="/") Delete
     block content
