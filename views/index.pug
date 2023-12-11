@@ -1,5 +1,38 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  main 
+    section.heading
+      h2=title
+      p Welcome to Stocky McStockit – Your One-Stop Solution for Organizing and Managing Your Inventory! Discover a seamless way to keep track of products, streamline your workflow, and take control of your inventory. Let's get started on the path to efficient inventory management!
+    section.overview 
+      h3 Overview
+      .count-box 
+        .products-count
+          h4 Total Products: 
+            span 15
+          h4.text-center Latest
+          .latest
+            ul 
+              li 
+                a(href="/")  Smartphone X
+              li 
+                a(href="/")  Smartphone X
+              li 
+                a(href="/")  Smartphone X
+              li 
+                a(href="/")  Smartphone X
+        .categories-count 
+          h4 Total Categories: 
+            span 5
+          h4.text-center Latest
+          .latest
+            ul 
+              li 
+                a(href="/")  Smartphone X
+              li 
+                a(href="/")  Smartphone X
+              li 
+                a(href="/")  Smartphone X
+              li 
+                a(href="/")  Smartphone X
