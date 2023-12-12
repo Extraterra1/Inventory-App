@@ -10,29 +10,20 @@ block content
       .count-box 
         .products-count
           h4 Total Products: 
-            span 15
+            span=numProducts
           h4.text-center Latest
           .latest
             ul 
-              li 
-                a(href="/")  Smartphone X
-              li 
-                a(href="/")  Smartphone X
-              li 
-                a(href="/")  Smartphone X
-              li 
-                a(href="/")  Smartphone X
+              each el in products 
+                li 
+                  a(href=el.url)=el.name
+              
         .categories-count 
           h4 Total Categories: 
-            span 5
+            span=numCategories
           h4.text-center Latest
           .latest
             ul 
-              li 
-                a(href="/")  Smartphone X
-              li 
-                a(href="/")  Smartphone X
-              li 
-                a(href="/")  Smartphone X
-              li 
-                a(href="/")  Smartphone X
+              each el in categories 
+                li 
+                  a(href=el.url)=el.name
