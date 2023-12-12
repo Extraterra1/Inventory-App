@@ -131,3 +131,24 @@ a {
 .latest ul li:hover {
   text-decoration: underline;
 }
+
+.cards-grid {
+  padding: 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60rem, 1fr));
+  gap: 3rem;
+  justify-content: center;
+}
+
+.card {
+  padding: 2rem;
+  border: 2px dashed var(--dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card ion-icon {
+  font-size: 2.5rem;
+  color: var(--info);
+}

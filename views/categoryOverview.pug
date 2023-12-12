@@ -1,0 +1,12 @@
+extends layout
+
+block content 
+    main 
+        section.heading 
+            h2=title
+        section.cards-grid 
+            each el in categories 
+                .card
+                    h3=el.name
+                    a(href=el.url)
+                        ion-icon(name="link") 
