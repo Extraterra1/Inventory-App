@@ -308,6 +308,10 @@ a {
   gap: 2rem;
 }
 
+.form .btn-submit {
+  margin-top: 5rem;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
