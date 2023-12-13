@@ -1,0 +1,15 @@
+extends layout
+
+block content 
+    main
+        section.heading 
+            h2=title
+        section.form
+            form(action="", method="post")
+                .form-group
+                    label(for="name") Name 
+                    input(type="text", name="name", id="name")
+                .form-group
+                    label(for="desc") Description 
+                    textarea(name="desc", id="desc")
+                input.btn.btn-submit(type="submit")
