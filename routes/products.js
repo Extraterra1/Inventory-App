@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
+const ObjectId = require('mongoose').Types.ObjectId;
 const Product = require('../models/productModel');
 const Category = require('../models/categoryModel.js');
 
@@ -55,4 +56,18 @@ router.post('/create', [
     res.redirect(newProduct.url);
   })
 ]);
+
+router.get(
+  '/:id',
+  asyncHandler(async (req, res, next) => {
+    // Check if valid object id
+    if (!ObjectId.isValid(req.params.id)) return next(new Error('Invalid ID'));
+
+    const product = await Product.findById(req.params.id).populate('category');
+
+    // Check if category exists
+    if (!product) return next(new Error('Product not found'));
+    res.render('productDetail', { title: product.name, product });
+  })
+);
 module.exports = router;
