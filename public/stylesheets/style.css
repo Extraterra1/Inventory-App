@@ -152,3 +152,54 @@ a {
   font-size: 2.5rem;
   color: var(--info);
 }
+
+.create-btn {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  bottom: 5rem;
+  right: 5rem;
+  height: 7rem;
+  width: 7rem;
+  padding: 1rem;
+  border-radius: 50%;
+  background-color: var(--success);
+
+  font-size: 4rem;
+  color: var(--light);
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.create-btn ion-icon {
+  transition: transform 0.3s ease;
+}
+
+.create-btn:hover::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+.create-btn::after {
+  position: absolute;
+  content: 'Create New Item';
+  color: var(--dark);
+  font-size: 1.3rem;
+  bottom: 120%;
+  text-align: center;
+  font-weight: 200;
+  width: 15ch;
+  padding: 0.5rem 2rem;
+  background-color: var(--gray-900);
+  color: var(--light);
+  border-radius: 0.5rem;
+  visibility: hidden;
+  opacity: 0;
+
+  transition: opacity 0.3s ease;
+}
+
+.create-btn:hover ion-icon {
+  transform: rotate(45deg);
+}

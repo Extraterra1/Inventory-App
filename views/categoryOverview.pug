@@ -1,7 +1,10 @@
 extends layout
 
 block content 
-    main 
+    main
+        a(href="/categories/create")
+            .create-btn
+                ion-icon(name="add-outline")
         section.heading 
             h2=title
         section.cards-grid 
