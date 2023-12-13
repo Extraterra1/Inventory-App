@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
 const ObjectId = require('mongoose').Types.ObjectId;
+const { body, validationResult } = require('express-validator');
 const Category = require('../models/categoryModel');
 const Product = require('../models/productModel');
 
@@ -23,6 +24,20 @@ router.get(
     res.render('categoryCreate', { title: 'Create New Category' });
   })
 );
+
+router.post('/create', [
+  body('name', 'Name must be between 3 and 20 chars long').trim().isLength({ min: 3, max: 20 }),
+  body('desc', 'Description must be at least 3 chars long').trim().isLength({ min: 3 }),
+  asyncHandler((req, res, next) => {
+    const errors = validationResult(req);
+    const newCategory = new Category({ name: req.body.name, desc: req.body.desc });
+    if (!errors.isEmpty()) return res.render('categoryCreate', { title: 'Create New Category', category: newCategory, errors: errors.array() });
+
+    newCategory.save();
+
+    res.redirect(newCategory.url);
+  })
+]);
 
 router.get(
   '/:id',

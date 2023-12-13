@@ -328,3 +328,7 @@ a {
   min-width: 40rem;
   min-height: 10rem;
 }
+
+.form ul li {
+  color: var(--danger);
+}

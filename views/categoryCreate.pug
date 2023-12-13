@@ -8,8 +8,12 @@ block content
             form(action="", method="post")
                 .form-group
                     label(for="name") Name 
-                    input(type="text", name="name", id="name")
+                    input(type="text", name="name", id="name", value=(category === undefined ? '' : category.name))
                 .form-group
                     label(for="desc") Description 
-                    textarea(name="desc", id="desc")
+                    textarea(name="desc", id="desc")=(category === undefined ? '' : category.desc)
+                if errors
+                    ul 
+                        each el in errors 
+                            li=el.msg
                 input.btn.btn-submit(type="submit")
