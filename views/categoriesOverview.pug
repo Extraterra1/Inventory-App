@@ -11,8 +11,9 @@ block content
             if categories.length > 0
                 each el in categories 
                     .card
-                        h3=el.name
-                        a(href=el.url)
+                        .card-heading 
+                            h3=el.name
+                            a(href=el.url)
                             ion-icon(name="link") 
             else
                 .empty-grid 

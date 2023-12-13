@@ -1,0 +1,37 @@
+extends layout
+
+block content 
+    main
+        a(href="/products/create")
+            .create-btn
+                ion-icon(name="add-outline")
+        section.heading 
+            h2=title
+        section.cards-grid 
+            if products.length > 0
+                each el in products 
+                    .card
+                        .card-heading 
+                            h3=el.name
+                            a(href=el.url)
+                            .actions 
+                                a(href=el.url+'/edit') 
+                                    ion-icon(name="create")
+                                a(href=el.url+'/delete') 
+                                    ion-icon(name="trash")
+                        .card-body
+                            .card-row.price
+                                ion-icon(name= "cash")
+                                p $#{el.price} 
+                            .card-row.stock 
+                                ion-icon(name="cube")
+                                p #{el.quantity} in stock
+                            .card-row.category 
+                                ion-icon(name="list-circle-outline")
+                                p 
+                                    a(href=el.category.url) #{el.category.name}
+            else
+                .empty-grid 
+                    h2 No Products found
+                    p Maybe you should add some
+                    p.small Just saying...

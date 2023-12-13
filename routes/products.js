@@ -7,8 +7,8 @@ const Product = require('../models/productModel');
 router.get(
   '/',
   asyncHandler(async (req, res, next) => {
-    const products = await Product.find().sort({ createdAt: 1 });
-    res.render('productOverview', {
+    const products = await Product.find().sort({ createdAt: 1 }).populate('category');
+    res.render('productsOverview', {
       title: 'Products',
       products
     });

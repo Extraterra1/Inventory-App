@@ -143,14 +143,60 @@ a {
 .card {
   padding: 2rem;
   border: 2px dashed var(--dark);
+}
+
+.card-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.card-heading .actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.card-heading .actions ion-icon {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-heading .actions ion-icon[name='trash']:hover {
+  color: var(--danger);
+}
+.card-heading .actions ion-icon[name='create']:hover {
+  color: var(--warning);
+}
+
 .card ion-icon {
   font-size: 2.5rem;
   color: var(--info);
+}
+
+.card-body {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.card-row {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.price ion-icon {
+  color: var(--success);
+}
+
+.category a {
+  color: var(--info);
+}
+
+.category a:hover {
+  text-decoration: underline;
 }
 
 .create-btn {
