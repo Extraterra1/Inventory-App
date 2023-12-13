@@ -338,3 +338,31 @@ a {
 .form ul li {
   color: var(--danger);
 }
+
+.product-detail {
+  margin-top: 5rem;
+  padding: 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60rem, 1fr));
+  justify-items: center;
+}
+
+.product-field {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  font-size: 4rem;
+}
+
+.product-field ion-icon[name='cash'] {
+  color: var(--success);
+}
+.product-field ion-icon[name='cube'] {
+  color: var(--info);
+}
+
+.product-field a {
+  color: var(--info);
+  text-decoration: underline;
+  text-underline-offset: 1rem;
+}

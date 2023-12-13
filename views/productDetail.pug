@@ -5,6 +5,18 @@ block content
         section.heading 
             h2=title
             .buttons 
-                a.btn.btn-edit(href="") Edit 
-                a.btn.btn-delete(href="") Delete 
+                a.btn.btn-edit(href=product.url + '/edit') Edit 
+                a.btn.btn-delete(href=product.url + '/delete') Delete
+        section.product-detail 
+                .product-field
+                    ion-icon(name= "cash")
+                    p $#{product.price} 
+                .product-field
+                    ion-icon(name="cube")
+                    p #{product.quantity} in stock
+                .product-field
+                    ion-icon(name="list-circle-outline")
+                    p 
+                        a(href=product.category.url) #{product.category.name}
+
         
