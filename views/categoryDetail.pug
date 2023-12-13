@@ -5,8 +5,8 @@ block content
         section.heading 
             h2=title
             .buttons 
-                a.btn.btn-edit(href="") Edit 
-                a.btn.btn-delete(href="") Delete 
+                a.btn.btn-edit(href=category.url + '/edit') Edit 
+                a.btn.btn-delete(href=category.url + '/delete') Delete 
         section.products-list 
                 h2 Products in this category
                 if products.length>0
