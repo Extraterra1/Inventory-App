@@ -18,6 +18,13 @@ router.get(
 );
 
 router.get(
+  '/create',
+  asyncHandler((req, res, next) => {
+    res.render('categoryCreate', { title: 'Create New Category' });
+  })
+);
+
+router.get(
   '/:id',
   asyncHandler(async (req, res, next) => {
     // Check if valid object id

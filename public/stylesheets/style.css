@@ -261,6 +261,12 @@ a {
   padding: 5rem;
 }
 
+.products-list h4 {
+  font-weight: 300;
+  text-align: center;
+  margin-top: 5rem;
+}
+
 .buttons {
   display: flex;
   gap: 2rem;

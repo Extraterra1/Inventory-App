@@ -7,13 +7,15 @@ block content
             .buttons 
                 a.btn.btn-edit(href="") Edit 
                 a.btn.btn-delete(href="") Delete 
-        if products.length > 0
-            section.products-list 
+        section.products-list 
                 h2 Products in this category
-                .cards-grid
-                    each el in products 
-                        .card
-                            .card-heading 
-                                h3=el.name
-                                a(href=el.url)
-                                    ion-icon(name="link") 
+                if products.length>0
+                    .cards-grid
+                        each el in products 
+                            .card
+                                .card-heading 
+                                    h3=el.name
+                                    a(href=el.url)
+                                        ion-icon(name="link")
+                else 
+                    h4 No products are using this category.
