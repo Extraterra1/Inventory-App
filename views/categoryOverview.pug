@@ -8,8 +8,14 @@ block content
         section.heading 
             h2=title
         section.cards-grid 
-            each el in categories 
-                .card
-                    h3=el.name
-                    a(href=el.url)
-                        ion-icon(name="link") 
+            if categories.length > 0
+                each el in categories 
+                    .card
+                        h3=el.name
+                        a(href=el.url)
+                            ion-icon(name="link") 
+            else
+                .empty-grid 
+                    h2 No Categories found
+                    p Maybe you should add some
+                    p.small Just saying...

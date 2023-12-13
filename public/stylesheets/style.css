@@ -203,3 +203,10 @@ a {
 .create-btn:hover ion-icon {
   transform: rotate(45deg);
 }
+
+.empty-grid {
+  line-height: 3rem;
+}
+.empty-grid p.small {
+  font-size: 1rem;
+}

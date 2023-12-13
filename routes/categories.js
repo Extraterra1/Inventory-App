@@ -7,7 +7,8 @@ const Category = require('../models/categoryModel');
 router.get(
   '/',
   asyncHandler(async (req, res, next) => {
-    const categories = await Category.find().sort({ createdAt: 1 });
+    const categories = await Category.find({ name: 'xddd' }).sort({ createdAt: 1 });
+    console.log(categories);
     res.render('categoryOverview', {
       title: 'Categories',
       categories
