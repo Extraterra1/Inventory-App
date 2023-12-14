@@ -56,4 +56,21 @@ router.get(
   })
 );
 
+router.get(
+  '/:id/delete',
+  asyncHandler(async (req, res, next) => {
+    // Check if valid object id
+    if (!ObjectId.isValid(req.params.id)) return next(new Error('Invalid ID'));
+
+    const [category, products] = await Promise.all([
+      Category.findById(req.params.id).sort({ createdAt: 1 }),
+      Product.find({ category: req.params.id }).sort({ createdAt: 1 })
+    ]);
+
+    // Check if category exists
+    if (!category) return next(new Error('Category not found'));
+    res.render('categoryDelete', { title: 'Delete' + category.name, category, products });
+  })
+);
+
 module.exports = router;
