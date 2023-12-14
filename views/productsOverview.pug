@@ -17,8 +17,9 @@ block content
                             .actions 
                                 a(href=el.url+'/edit') 
                                     ion-icon(name="create")
-                                a(href=el.url+'/delete') 
-                                    ion-icon(name="trash")
+                                form(action=el.url + '/delete', method="post")     
+                                    button
+                                        ion-icon(name="trash",)
                         .card-body
                             .card-row.price
                                 ion-icon(name= "cash")

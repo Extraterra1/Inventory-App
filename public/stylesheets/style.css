@@ -366,3 +366,9 @@ a {
   text-decoration: underline;
   text-underline-offset: 1rem;
 }
+
+button {
+  background-color: inherit;
+  outline: none;
+  border: none;
+}

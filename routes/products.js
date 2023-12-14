@@ -70,4 +70,5 @@ router.get(
     res.render('productDetail', { title: product.name, product });
   })
 );
+
 module.exports = router;
