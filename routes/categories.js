@@ -52,6 +52,19 @@ router.get(
     res.render('categoryDetail', { title: category.name, category, products });
   })
 );
+router.get(
+  '/:id/edit',
+  asyncHandler(async (req, res, next) => {
+    // Check if valid object id
+    if (!ObjectId.isValid(req.params.id)) return next(new Error('Invalid ID'));
+
+    const category = await Category.findById(req.params.id);
+
+    // Check if category exists
+    if (!category) return next(new Error('Category not found'));
+    res.render('categoryCreate', { title: 'Edit ' + category.name, category });
+  })
+);
 
 router.get(
   '/:id/delete',
