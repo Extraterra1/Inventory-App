@@ -1,0 +1,24 @@
+extends layout
+
+block content 
+    main
+        section.heading 
+            h2=title
+        if products.length > 0
+            section.products-list 
+                    h2 There are some products in this category, you need to delete them first
+                    .cards-grid
+                        each el in products 
+                            .card
+                                .card-heading 
+                                    h3=el.name
+                                    a(href=el.url)
+                                        ion-icon(name="link")
+        else
+            section.confirmation 
+                h2 Are you sure you want to delete #{category.name}?
+                form(action="", method="post")
+                    button.btn.btn-delete Delete
+
+                
+                    

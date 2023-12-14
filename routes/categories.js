@@ -28,12 +28,12 @@ router.get(
 router.post('/create', [
   body('name', 'Name must be between 3 and 20 chars long').trim().isLength({ min: 3, max: 20 }),
   body('desc', 'Description must be at least 3 chars long').trim().isLength({ min: 3 }),
-  asyncHandler((req, res, next) => {
+  asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
     const newCategory = new Category({ name: req.body.name, desc: req.body.desc });
     if (!errors.isEmpty()) return res.render('categoryCreate', { title: 'Create New Category', category: newCategory, errors: errors.array() });
 
-    newCategory.save();
+    await newCategory.save();
 
     res.redirect(newCategory.url);
   })
@@ -69,7 +69,7 @@ router.get(
 
     // Check if category exists
     if (!category) return next(new Error('Category not found'));
-    res.render('categoryDelete', { title: 'Delete' + category.name, category, products });
+    res.render('categoryDelete', { title: 'Delete ' + category.name, category, products });
   })
 );
 

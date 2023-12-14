@@ -372,3 +372,15 @@ button {
   outline: none;
   border: none;
 }
+
+.confirmation {
+  padding: 5rem;
+  display: grid;
+  gap: 3rem;
+  place-items: center;
+}
+
+.confirmation .btn {
+  padding: 2rem 5rem;
+  font-size: 3rem;
+}
