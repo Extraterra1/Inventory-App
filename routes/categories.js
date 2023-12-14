@@ -52,6 +52,7 @@ router.get(
     res.render('categoryDetail', { title: category.name, category, products });
   })
 );
+
 router.get(
   '/:id/edit',
   asyncHandler(async (req, res, next) => {
@@ -65,6 +66,21 @@ router.get(
     res.render('categoryCreate', { title: 'Edit ' + category.name, category });
   })
 );
+
+router.post('/:id/edit', [
+  body('name', 'Name must be between 3 and 20 chars long').trim().isLength({ min: 3, max: 20 }),
+  body('desc', 'Description must be at least 3 chars long').trim().isLength({ min: 3 }),
+  asyncHandler(async (req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) return next(new Error('Invalid ID'));
+    const errors = validationResult(req);
+    const newCategory = new Category({ name: req.body.name, desc: req.body.desc, _id: req.params.id });
+    if (!errors.isEmpty()) return res.render('categoryCreate', { title: 'Edit ' + newCategory.name, category: newCategory, errors: errors.array() });
+
+    await Category.findByIdAndUpdate(req.params.id, newCategory);
+
+    res.redirect(newCategory.url);
+  })
+]);
 
 router.get(
   '/:id/delete',
