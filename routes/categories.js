@@ -45,10 +45,7 @@ router.get(
     // Check if valid object id
     if (!ObjectId.isValid(req.params.id)) return next(new Error('Invalid ID'));
 
-    const [category, products] = await Promise.all([
-      Category.findById(req.params.id).sort({ createdAt: 1 }),
-      Product.find({ category: req.params.id }).sort({ createdAt: 1 })
-    ]);
+    const [category, products] = await Promise.all([Category.findById(req.params.id), Product.find({ category: req.params.id }).sort({ createdAt: 1 })]);
 
     // Check if category exists
     if (!category) return next(new Error('Category not found'));
@@ -62,14 +59,28 @@ router.get(
     // Check if valid object id
     if (!ObjectId.isValid(req.params.id)) return next(new Error('Invalid ID'));
 
-    const [category, products] = await Promise.all([
-      Category.findById(req.params.id).sort({ createdAt: 1 }),
-      Product.find({ category: req.params.id }).sort({ createdAt: 1 })
-    ]);
+    const [category, products] = await Promise.all([Category.findById(req.params.id), Product.find({ category: req.params.id }).sort({ createdAt: 1 })]);
 
     // Check if category exists
     if (!category) return next(new Error('Category not found'));
     res.render('categoryDelete', { title: 'Delete ' + category.name, category, products });
+  })
+);
+
+router.post(
+  '/:id/delete',
+  asyncHandler(async (req, res, next) => {
+    // Check if valid object id
+    if (!ObjectId.isValid(req.params.id)) return next(new Error('Invalid ID'));
+
+    const [category, products] = await Promise.all([Category.findById(req.params.id), Product.find({ category: req.params.id }).sort({ createdAt: 1 })]);
+    if (products.length > 0) return res.render('categoryDelete', { title: 'Delete ' + category.name, category, products });
+
+    // Check if category exists
+    if (!category) return next(new Error('Category not found'));
+
+    await Category.findByIdAndDelete(req.params.id);
+    res.redirect('/categories');
   })
 );
 
