@@ -65,9 +65,23 @@ router.get(
 
     const product = await Product.findById(req.params.id).populate('category');
 
-    // Check if category exists
+    // Check if product exists
     if (!product) return next(new Error('Product not found'));
     res.render('productDetail', { title: product.name, product });
+  })
+);
+
+router.post(
+  '/:id/delete',
+  asyncHandler(async (req, res, next) => {
+    // Check if valid object id
+    if (!ObjectId.isValid(req.params.id)) return next(new Error('Invalid ID'));
+
+    const product = await Product.findByIdAndDelete(req.params.id);
+
+    // Check if product exists
+    if (!product) return next(new Error('Product not found'));
+    res.redirect('/products');
   })
 );
 
