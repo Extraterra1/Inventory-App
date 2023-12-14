@@ -71,6 +71,20 @@ router.get(
   })
 );
 
+router.get(
+  '/:id/edit',
+  asyncHandler(async (req, res, next) => {
+    // Check if valid object id
+    if (!ObjectId.isValid(req.params.id)) return next(new Error('Invalid ID'));
+
+    const [product, categories] = await Promise.all([Product.findById(req.params.id), Category.find().sort({ name: 1 })]);
+
+    // Check if product exists
+    if (!product) return next(new Error('Product not found'));
+    res.render('productCreate', { title: 'Edit ' + product.name, product, categories });
+  })
+);
+
 router.post(
   '/:id/delete',
   asyncHandler(async (req, res, next) => {
